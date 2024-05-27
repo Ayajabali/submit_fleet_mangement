@@ -1,0 +1,45 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>VehicleID</th>
+      <th>VehicleNumber</th>
+      <th>VehicleType</th>
+      <th>LastDirection</th>
+      <th>LastStatus</th>
+      <th>LastAddress</th>
+      <th>LastLatitude</th>
+      <th>LastLongitude</th>
+      <th>Show more information</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let vehicle of vehicles">
+      <td>{{ vehicle.vehicleID }}</td>
+      <td>{{ vehicle.vehicleNumber }}</td>
+      <td>{{ vehicle.vehicleType }}</td>
+      <td>{{ vehicle.lastDirection }}</td>
+      <td>{{ vehicle.lastStatus }}</td>
+      <td>{{ vehicle.lastAddress }}</td>
+      <td>{{ vehicle.lastLatitude }}</td>
+      <td>{{ vehicle.lastLongitude }}</td>
+      <td><button (click)="showMore(vehicle.vehicleID)">Show More</button></td>
+      <td>
+        <button (click)="delete(vehicle.vehicleID)">Delete</button>
+        <button (click)="openNewPage()">Manage vehicle/vehicle information</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="button-container">
+  <div>
+    <button (click)="openDriverPage()">Driver Information and Management</button>
+  </div>
+  <div>
+    <button (click)="openRouteHistoryPage()">RouteHistory</button>
+  </div>
+  <div>
+    <button (click)="openGeofencesPage()">Geofences Information</button>
+  </div>
+</div>

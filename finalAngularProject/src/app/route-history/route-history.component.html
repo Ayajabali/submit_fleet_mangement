@@ -1,0 +1,61 @@
+<div>
+  <h2>Add Route History</h2>
+  <div>
+    <label for="vehicleSelect">Select Vehicle:</label>
+    <select id="vehicleSelect" [(ngModel)]="selectedVehicleId" (change)="loadRouteHistories()">
+      <option *ngFor="let vehicle of vehicleNumbers" [value]="vehicle.vehicleID">
+        {{ vehicle.vehicleNumber }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <h3>New Route History for Vehicle ID: {{ selectedVehicleId }}</h3>
+    <form (submit)="addRouteHistory()">
+      <label for="vehicleDirection">Direction:</label>
+      <input id="vehicleDirection" type="number" [(ngModel)]="newRouteHistory.VehicleDirection" name="VehicleDirection" required>
+      <label for="status">Status:</label>
+      <input id="status" type="text" [(ngModel)]="newRouteHistory.Status" name="Status" required>
+      <label for="vehicleSpeed">Speed:</label>
+      <input id="vehicleSpeed" type="text" [(ngModel)]="newRouteHistory.VehicleSpeed" name="VehicleSpeed" required>
+      <label for="epoch">Epoch:</label>
+      <input id="epoch" type="number" [(ngModel)]="newRouteHistory.Epoch" name="Epoch" required>
+      <label for="address">Address:</label>
+      <input id="address" type="text" [(ngModel)]="newRouteHistory.Address" name="Address" required>
+      <label for="latitude">Latitude:</label>
+      <input id="latitude" type="number" [(ngModel)]="newRouteHistory.Latitude" name="Latitude" step="any" required>
+      <label for="longitude">Longitude:</label>
+      <input id="longitude" type="number" [(ngModel)]="newRouteHistory.Longitude" name="Longitude" step="any" required>
+      <button type="submit">Add Route History</button>
+    </form>
+  </div>
+  <div>
+    <h2>Route Histories for Vehicle ID: {{ selectedVehicleId }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Vehicle ID</th>
+          <th>Vehicle Number</th>
+          <th>Address</th>
+          <th>Status</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Vehicle Direction</th>
+          <th>GPS Speed</th>
+          <th>GPS Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let history of routeHistories">
+          <td>{{ history.vehicleID }}</td>
+          <td>{{ history.vehicleNumber }}</td>
+          <td>{{ history.address }}</td>
+          <td>{{ history.status }}</td>
+          <td>{{ history.latitude }}</td>
+          <td>{{ history.longitude }}</td>
+          <td>{{ history.vehicleDirection }}</td>
+          <td>{{ history.gpsSpeed }}</td>
+          <td>{{ formatDate(history.gpsTime) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

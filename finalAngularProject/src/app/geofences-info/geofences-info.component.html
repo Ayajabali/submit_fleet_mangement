@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>Geofence ID</th>
+      <th>Geofence Type</th>
+      <th>Added Date</th>
+      <th>Stroke Color</th>
+      <th>Stroke Opacity</th>
+      <th>Stroke Weight</th>
+      <th>Fill Color</th>
+      <th>Fill Opacity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let geofence of geofences">
+      <td>{{ geofence.geofenceID }}</td>
+      <td>{{ geofence.geofenceType }}</td>
+      <td>{{ geofence.addedDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+      <td>{{ geofence.strokeColor }}</td>
+      <td>{{ geofence.strokeOpacity }}</td>
+      <td>{{ geofence.strokeWeight }}</td>
+      <td>{{ geofence.fillColor }}</td>
+      <td>{{ geofence.fillOpacity }}</td>
+    </tr>
+  </tbody>
+</table>

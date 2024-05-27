@@ -1,0 +1,23 @@
+<ng-template #content let-modal="close">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Vehicle Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>VehicleNumber: {{ vehicleDetails.vehicleNumber }}</p>
+    <p>VehicleType: {{ vehicleDetails.vehicleType }}</p>
+    <label for="driver-select">DriverName:</label>
+    <select id="driver-select" [(ngModel)]="vehicleDetails.driverId">
+      <option *ngFor="let driver of drivers" [value]="driver.id">{{ driver.name }}</option>
+    </select>
+    <p>PhoneNumber: {{ vehicleDetails.phoneNumber }}</p>
+    <p>LastPosition: {{ vehicleDetails.lastLatitude }}, {{ vehicleDetails.lastLongitude }}</p>
+    <p>VehicleMake: {{ vehicleDetails.vehicleMake }}</p>
+    <p>VehicleModel: {{ vehicleDetails.vehicleModel }}</p>
+    <p>LastGPSTime: {{ vehicleDetails.lastGPSTime }}</p>
+    <p>LastGPSSpeed: {{ vehicleDetails.lastGPSSpeed }}</p>
+    <p>LastAddress: {{ vehicleDetails.lastAddress }}</p>
+  </div>
+</ng-template>

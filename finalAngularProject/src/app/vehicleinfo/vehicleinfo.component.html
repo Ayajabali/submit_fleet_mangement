@@ -1,0 +1,56 @@
+<div>
+  <h2>Vehicle Information Management</h2>
+
+  <!-- Form for adding a new vehicle information -->
+  <form #addVehicleInfoForm="ngForm" (ngSubmit)="submitAddForm(addVehicleInfoForm)">
+    <h3>Add Vehicle Information</h3>
+    <label for="vehicleIdAdd">Vehicle ID:</label>
+    <input type="text" id="vehicleIdAdd" name="vehicleId" [(ngModel)]="newVehicleId" required>
+
+    <label for="driverIdAdd">Driver ID:</label>
+    <input type="text" id="driverIdAdd" name="driverId" [(ngModel)]="newDriverId" required>
+
+    <label for="vehicleMakeAdd">Vehicle Make:</label>
+    <input type="text" id="vehicleMakeAdd" name="vehicleMake" [(ngModel)]="newVehicleMake" required>
+
+    <label for="vehicleModelAdd">Vehicle Model:</label>
+    <input type="text" id="vehicleModelAdd" name="vehicleModel" [(ngModel)]="newVehicleModel" required>
+
+    <label for="purchaseDateAdd">Purchase Date:</label>
+    <input type="date" id="purchaseDateAdd" name="purchaseDate" [(ngModel)]="newPurchaseDate" required>
+
+    <button type="submit">Add Vehicle Information</button>
+  </form>
+
+  <!-- Form for editing an existing vehicle information -->
+  <form *ngIf="editMode" #editVehicleInfoForm="ngForm" (ngSubmit)="submitEditForm(editVehicleInfoForm)">
+    <h3>Edit Vehicle Information</h3>
+    <label for="vehicleIdEdit">Vehicle ID:</label>
+    <input type="text" id="vehicleIdEdit" name="vehicleId" [(ngModel)]="editVehicleId" required>
+
+    <label for="driverIdEdit">Driver ID:</label>
+    <input type="text" id="driverIdEdit" name="driverId" [(ngModel)]="editDriverId" required>
+
+    <label for="vehicleMakeEdit">Vehicle Make:</label>
+    <input type="text" id="vehicleMakeEdit" name="vehicleMake" [(ngModel)]="editVehicleMake" required>
+
+    <label for="vehicleModelEdit">Vehicle Model:</label>
+    <input type="text" id="vehicleModelEdit" name="vehicleModel" [(ngModel)]="editVehicleModel" required>
+
+    <label for="purchaseDateEdit">Purchase Date:</label>
+    <input type="date" id="purchaseDateEdit" name="purchaseDate" [(ngModel)]="editPurchaseDate" required>
+
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <hr>
+
+  <h3>Vehicle Information List</h3>
+  <ul>
+    <li *ngFor="let vehicleInfo of vehicleInfos">
+      {{ vehicleInfo.vehicleId }} - {{ vehicleInfo.driverId }} - {{ vehicleInfo.vehicleMake }} - {{ vehicleInfo.vehicleModel }} - {{ vehicleInfo.purchaseDate }}
+      <button (click)="editVehicleInfo(vehicleInfo)">Edit</button>
+      <button (click)="deleteVehicleInfo(vehicleInfo)">Delete</button>
+    </li>
+  </ul>
+</div>

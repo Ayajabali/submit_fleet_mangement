@@ -1,0 +1,38 @@
+<div>
+  <h2>Vehicle Management</h2>
+
+  <!-- Form for adding a new vehicle -->
+  <form #addVehicleForm="ngForm" (ngSubmit)="submitAddForm(addVehicleForm)">
+    <h3>Add Vehicle</h3>
+    <label for="vehicleNumberAdd">Vehicle Number:</label>
+    <input type="text" id="vehicleNumberAdd" name="vehicleNumber" [(ngModel)]="newVehicleNumber" required>
+
+    <label for="vehicleTypeAdd">Vehicle Type:</label>
+    <input type="text" id="vehicleTypeAdd" name="vehicleType" [(ngModel)]="newVehicleType" required>
+
+    <button type="submit">Add Vehicle</button>
+  </form>
+
+  <!-- Form for editing an existing vehicle -->
+  <form *ngIf="editMode" #editVehicleForm="ngForm" (ngSubmit)="submitEditForm(editVehicleForm)">
+    <h3>Edit Vehicle</h3>
+    <label for="vehicleNumberEdit">Vehicle Number:</label>
+    <input type="text" id="vehicleNumberEdit" name="vehicleNumber" [(ngModel)]="editVehicleNumber" required>
+
+    <label for="vehicleTypeEdit">Vehicle Type:</label>
+    <input type="text" id="vehicleTypeEdit" name="vehicleType" [(ngModel)]="editVehicleType" required>
+
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <hr> <!-- Add a horizontal line for separation -->
+
+  <h3>Vehicle List</h3>
+  <ul>
+    <li *ngFor="let vehicle of vehicles">
+      {{ vehicle.vehicleNumber }} - {{ vehicle.vehicleType }}
+      <button (click)="editVehicle(vehicle)">Edit</button>
+      <button (click)="deleteVehicle(vehicle)">Delete</button> <!-- Add delete button -->
+    </li>
+  </ul>
+</div>

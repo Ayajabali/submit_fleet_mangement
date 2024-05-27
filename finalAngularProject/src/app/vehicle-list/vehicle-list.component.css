@@ -1,0 +1,18 @@
+.button-container {
+  margin-top: 20px; /* Adjust the value as needed */
+  text-align: center; /* Optional: Center the button */
+}
+
+  .button-container button {
+    padding: 10px 20px; /* Optional: Add padding for better appearance */
+    font-size: 16px; /* Optional: Increase font size */
+  }
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+  .button-container div {
+    margin-bottom: 10px; /* Adjust as needed */
+  }

@@ -1,0 +1,38 @@
+<div>
+  <h2>Driver Management</h2>
+
+  <!-- Form for adding a new driver -->
+  <form #addDriverForm="ngForm" (ngSubmit)="submitAddForm(addDriverForm)">
+    <h3>Add Driver</h3>
+    <label for="driverNameAdd">Driver Name:</label>
+    <input type="text" id="driverNameAdd" name="driverName" [(ngModel)]="newDriverName" required>
+
+    <label for="phoneNumberAdd">Phone Number:</label>
+    <input type="text" id="phoneNumberAdd" name="phoneNumber" [(ngModel)]="newDriverPhoneNumber" required>
+
+    <button type="submit">Add Driver</button>
+  </form>
+
+  <!-- Form for editing an existing driver -->
+  <form *ngIf="editMode" #editDriverForm="ngForm" (ngSubmit)="submitEditForm(editDriverForm)">
+    <h3>Edit Driver</h3>
+    <label for="driverNameEdit">Driver Name:</label>
+    <input type="text" id="driverNameEdit" name="driverName" [(ngModel)]="editDriverName" required>
+
+    <label for="phoneNumberEdit">Phone Number:</label>
+    <input type="text" id="phoneNumberEdit" name="phoneNumber" [(ngModel)]="editDriverPhoneNumber" required>
+
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <hr> <!-- Add a horizontal line for separation -->
+
+  <h3>Driver List</h3>
+  <ul>
+    <li *ngFor="let driver of drivers">
+      {{ driver.driverName }} - {{ driver.phoneNumber }}
+      <button (click)="editDriver(driver)">Edit</button>
+      <button (click)="deleteDriver(driver)">Delete</button> <!-- Add delete button -->
+    </li>
+  </ul>
+</div>
